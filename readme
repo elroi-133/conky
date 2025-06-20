@@ -1,0 +1,27 @@
+instala
+sudo apt-get install conky-all
+
+copia los siguiente archivos en ~ (raiz del usuario)
+.conkyrc
+.start-contry
+
+en el archivo .conkyrc cambia el nombre del wlp2s0 por la interfaz del wifi que te salga con el comando ifconfig
+
+dale permiso de ejecucion a .start-contry
+chmod +x ~/.start-contry
+
+para que inicie automaticamente crea un proceso
+	- abre la app aplicaciones al inicio
+	- click en el +
+	- click orden personalizada
+		* nombre: conky
+		* orden: /home/elroi133/.start-conky
+		* comentario: conky
+		* retraso: 1
+
+install:
+	- sudo apt install lm-sensors
+	- sudo apt install cpufrequtils
+
+ejecutar 
+	- sudo dmidecode --type memory > ~/ram_info.txt
