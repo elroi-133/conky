@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Conky
+Exec=/home/tu_usuario/.start-contry
+Comment=Monitoreo del sistema con estilo
+X-GNOME-Autostart-enabled=true
+

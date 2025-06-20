@@ -41,6 +41,13 @@ Este proyecto contiene una personalización avanzada de **Conky**, con integraci
    Comando: /home/tu_usuario/.start-contry
    Comentario: Monitoreo visual
    Retraso recomendado: 1 segundo
+
+
+## ⚙️ `conky.desktop` — Iniciar Conky automáticamente
+   Guarda este archivo como `conky.desktop` en:
+   ```bash
+   ~/.config/autostart/conky.desktop
+   Puedes generar esta carpeta si no existe: mkdir -p ~/.config/autostart
 ---
 
 ## 🌤️ Sobre el clima
