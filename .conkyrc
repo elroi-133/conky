@@ -63,7 +63,7 @@ ${color grey}Info:$color ${scroll 32 $sysname $nodename $kernel $machine}
 $hr
 ${color orange}${alignc}${time %H:%M}${font}
 ${color orange}${alignc} --${time %d}/${time %m}/${time %Y}--
-${color orange}${alignc}${execi 3600 curl -s "wttr.in/~Barcelona+venezuela?format=Temp:%t+Hume:%h\n+Vien:%w+Lluvia:%p+Luna:%m"}
+${color orange}${alignc}${execi 3600 cat ~/.cache/wttr_info.txt}
 ${color grey}Uptime:$color $uptime
 $hr 
 ${color grey} ${execi 10800 cat /proc/cpuinfo | grep "model name" | uniq | awk -F: '{print $2}'}

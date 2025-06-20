@@ -1,30 +1,22 @@
 #!/bin/bash
 
-# Ruta al archivo donde guardarás el resultado
 OUTPUT_FILE="$HOME/.cache/wttr_info.txt"
 
-# Consulta y guarda los datos de forma estructurada
-DATA=$(curl -s "wttr.in/~Barcelona+venezuela?format=Temp:%t+Vien:%w+Hume:%h+Lluvia:%p+Luna:%m")
+DATA=$(curl -s "wttr.in/~Barcelona+venezuela?format=Temp:%t+Hume:%h+Vien:%w+\\nLluvia:%p+Luna:%m")
 
-# Extrae el ícono de la luna
-LUNA_ICON=$(echo "$DATA" | grep -oE "Luna:.*" | cut -d':' -f2)
+ICON=$(echo "$DATA" | grep -o "Luna:.*" | cut -d':' -f2)
 
-# Mapea fases lunares a nombres
-case "$LUNA_ICON" in
-  🌑) LUNA_DESC="Luna Nueva" ;;
-  🌒) LUNA_DESC="Creciente Iluminante" ;;
-  🌓) LUNA_DESC="Cuarto Creciente" ;;
-  🌔) LUNA_DESC="Gibosa Creciente" ;;
-  🌕) LUNA_DESC="Luna Llena" ;;
-  🌖) LUNA_DESC="Gibosa Menguante" ;;
-  🌗) LUNA_DESC="Cuarto Menguante" ;;
-  🌘) LUNA_DESC="Menguante Iluminante" ;;
-   *) LUNA_DESC="Desconocida" ;;
+case "$ICON" in
+  🌑) PHASE="Luna Nueva" ;;
+  🌒) PHASE="Creciente Iluminante" ;;
+  🌓) PHASE="Cuarto Creciente" ;;
+  🌔) PHASE="Gibosa Creciente" ;;
+  🌕) PHASE="Luna Llena" ;;
+  🌖) PHASE="Gibosa Menguante" ;;
+  🌗) PHASE="Cuarto Menguante" ;;
+  🌘) PHASE="Menguante Iluminante" ;;
+   *) PHASE="Desconocida" ;;
 esac
 
-# Reemplaza el ícono por texto
-FORMATTED=$(echo "$DATA" | sed "s/Luna:$LUNA_ICON/Luna: $LUNA_DESC/")
-
-# Guarda el resultado
-echo "$FORMATTED" > "$OUTPUT_FILE"
-
+FORMATTED=$(echo "$DATA" | sed "s/Luna:$ICON/Luna: $PHASE/")
+echo -e "$FORMATTED" > "$OUTPUT_FILE"
