@@ -1,4 +1,4 @@
-# 🖥️ Conky Setup - Configuración personalizada de Roissmer
+# 🖥️ Conky Setup - Configuración personalizada
 
 Este proyecto contiene una personalización avanzada de **Conky**, con integración de clima, monitoreo del sistema y un diseño visual atractivo usando **FiraCode Nerd Font** e íconos Unicode.
 
@@ -28,11 +28,14 @@ Este proyecto contiene una personalización avanzada de **Conky**, con integraci
    ```bash
    git clone https://github.com/tu_usuario/conky-config.git
    cd conky-config
+   ```
+
 
 2. **Ejecuta el instalador:**
    ```bash
    chmod +x setup-conky.sh
    ./setup-conky.sh
+   ```
 
 3. **Agrega Conky al inicio (opcional):**
    Abre “Aplicaciones al inicio”
@@ -44,10 +47,11 @@ Este proyecto contiene una personalización avanzada de **Conky**, con integraci
 
 
 ## ⚙️ `conky.desktop` — Iniciar Conky automáticamente
-   Guarda este archivo como `conky.desktop` en:
+   Guarda este archivo como `conky.desktop` en `~/.config/autostart`.  
+   Si esa carpeta no existe, créala con:
    ```bash
-   ~/.config/autostart/conky.desktop
-   Puedes generar esta carpeta si no existe: mkdir -p ~/.config/autostart
+   mkdir -p ~/.config/autostart
+   ```
 ---
 
 ## 🌤️ Sobre el clima
@@ -65,4 +69,4 @@ Este proyecto contiene una personalización avanzada de **Conky**, con integraci
 ---
 
 ## ✨ Autor
-elroi-133 — GitHub
+[elroi-133 en GitHub](https://github.com/elroi-133)
