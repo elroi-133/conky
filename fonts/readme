@@ -1,0 +1,9 @@
+paso 1: copiar el archivo FiraCode.zip en
+	~/.local/share/fonts
+paso 2: descomprime
+	unzip FiraCode.zip -d ~/.local/share/fonts
+paso 3: reinicia cache
+	fc-cache -fv
+paso 4: prueba que se instalo correctamente
+	fc-list | grep "FiraCode"
+

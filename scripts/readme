@@ -1,0 +1,9 @@
+paso 1: copiar archivo
+	copia el archivo update_wttr en el directorio raiz de tu usuario (~)
+paso 2: permisos de ejecucion
+	chmod +x ~/update_wttr.sh
+paso 3: programar consulta cada 2 horas
+	ejecuta en console crontab -e y agregar
+	0 */2 * * * /home/tu_usuario/update_wttr.sh
+	guarda y cierra
+
