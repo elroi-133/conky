@@ -60,11 +60,11 @@ conky.config = {
 
 conky.text = [[
 ${color grey}Info:$color ${scroll 32 $sysname $nodename $kernel $machine}
-$hr
-${color orange}${alignc}${time %H:%M}${font}
-${color orange}${alignc} --${time %d}/${time %m}/${time %Y}--
-${color orange}${alignc}${execi 3600 cat ~/.cache/wttr_info.txt}
-${color grey}Uptime:$color $uptime
+$hr 
+${color orange}${alignc}─── ${time %A %d de %B de %Y} ───
+${color orange}${alignc}${execi 3600 sed -n '1p' ~/.cache/wttr_info.txt}
+${color orange}${alignc}${execi 3600 sed -n '2p' ~/.cache/wttr_info.txt}
+${color grey} Uptime:$color $uptime ${alignr}${color grey}  Bateria: ${color orange}${execi 10 cat /sys/class/power_supply/BAT1/status} – ${cat /sys/class/power_supply/BAT1/capacity}%
 $hr 
 ${color grey} ${execi 10800 cat /proc/cpuinfo | grep "model name" | uniq | awk -F: '{print $2}'}
 ${color white}CPU1:$color ${cpu cpu1}% ${color blue}${execi 10 cpufreq-info -c 0 -f | awk '{printf "%.2f\n", $1/1000000}'} GHz ${color red}${execi 10 sensors | awk '/Core 0/ {print $3}'} ${color orange}$alignc${cpubar cpu1}
@@ -74,7 +74,7 @@ ${color white}CPU4:$color ${cpu cpu4}% ${color blue}${execi 10 cpufreq-info -c 3
 $hr
 ${color grey} Memoria RAM:
 ${color white}Socket 1:$color ${execi 10800 awk '/Size:/ {print $2 " GB"}' ~/ram_info.txt | sed -n '1p'} - ${color blue}${execi 10800 awk '/Type:/ {print $2}' ~/ram_info.txt | sed -n '2p'} - ${execi 10800 awk '/Form Factor:/ {print $3}' ~/ram_info.txt | sed -n '1p'} - ${color red}${execi 10800 awk '/Speed:/ {print $2 " MT/s"}' ~/ram_info.txt | sed -n '1p'}
-${color white}Socket 2:$color ${execi 10800 awk '/Size:/ {print $2 " GB"}' ~/ram_info.txt | sed -n '2p'} - ${color blue}${execi 10800 awk '/Type:/ {print $2}' ~/ram_info.txt | sed -n '3p'} - ${execi 10800 awk '/Form Factor:/ {print $3}' ~/ram_info.txt | sed -n '2p'} - ${color red}${execi 10800 awk '/Speed:/ {print $2 " MT/s"}' ~/ram_info.txt | sed -n '2p'}
+${color white}Socket 2:$color ${execi 10800 awk '/Size:/ {print $2 " GB"}' ~/ram_info.txt | sed -n '2p'} - ${color blue}${execi 10800 awk '/Type:/ {print $2}' ~/ram_info.txt | sed -n '3p'} - ${execi 10800 awk '/Form Factor:/ {print $3}' ~/ram_info.txt | sed -n '2p'} - ${color red}${execi 10800 awk '/Speed:/ {print $2 " MT/s"}' ~/ram_info.txt | sed -n '3p'}
 
 ${color white}RAM Usada:$color $memperc% ${color orange}$alignr $mem / $memmax 
 ${color orange}${membar}
