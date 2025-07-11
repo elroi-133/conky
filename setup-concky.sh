@@ -35,6 +35,9 @@ fi
 echo "🧱 Instalando paquetes adicionales"
 sudo apt-get install -y lm-sensors cpufrequtils
 
+echo "🧱 Instalando paquetes adicionales"
+sudo apt-get install -y jq
+
 # Manejo de dpkg roto
 sudo dpkg --configure -a 2>/dev/null || echo "⚠️ Ejecuta manualmente: sudo dpkg --configure -a"
 
@@ -55,13 +58,13 @@ fi
 
 # ─────── Script update_wttr ─────── #
 echo "☁️ Configurando script 'update_wttr.sh'..."
-if [ -f "$WORKDIR/scripts/update_wttr.sh" ]; then
-    cp "$WORKDIR/scripts/update_wttr.sh" "$HOME/update_wttr.sh"
-    chmod +x "$HOME/update_wttr.sh"
-    crontab -l | grep -q "update_wttr.sh" || (crontab -l 2>/dev/null; echo "0 */2 * * * $HOME/update_wttr.sh") | crontab -
-    echo "⏱️ Script 'update_wttr.sh' programado para ejecutarse cada 2 horas."
+if [ -f "$WORKDIR/scripts/update_wttr_nuevo.sh" ]; then
+    cp "$WORKDIR/scripts/update_wttr_nuevo.sh" "$HOME/update_wttr_nuevo.sh"
+    chmod +x "$HOME/update_wttr_nuevo.sh"
+    crontab -l | grep -q "update_wttr_nuevo.sh" || (crontab -l 2>/dev/null; echo "0 */2 * * * $HOME/update_wttr_nuevo.sh") | crontab -
+    echo "⏱️ Script 'update_wttr_nuevo.sh' programado para ejecutarse cada 2 horas."
 else
-    echo "⚠️ No se encontró 'update_wttr.sh' en $WORKDIR"
+    echo "⚠️ No se encontró 'update_wttr_nuevo.sh' en $WORKDIR"
 fi
 
 echo ""

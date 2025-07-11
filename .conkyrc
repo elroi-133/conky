@@ -62,8 +62,7 @@ conky.text = [[
 ${color grey}Info:$color ${scroll 32 $sysname $nodename $kernel $machine}
 $hr 
 ${color orange}${alignc}─── ${time %A %d de %B de %Y} ───
-${color orange}${alignc}${execi 3600 sed -n '1p' ~/.cache/wttr_info.txt}
-${color orange}${alignc}${execi 3600 sed -n '2p' ~/.cache/wttr_info.txt}
+${color orange}${execi 3600 cat ~/.cache/wttr_info.txt}
 ${color grey} Uptime:$color $uptime ${alignr}${color grey}  Bateria: ${color orange}${execi 10 cat /sys/class/power_supply/BAT1/status} – ${cat /sys/class/power_supply/BAT1/capacity}%
 $hr 
 ${color grey} ${execi 10800 cat /proc/cpuinfo | grep "model name" | uniq | awk -F: '{print $2}'}
@@ -102,7 +101,4 @@ $hr
 ${color grey}Processes:$color $processes  ${color grey}Running:$color $running_processes
 ${color grey}Nombre              PID     CPU%   MEM%
 ${color lightgrey}${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
-${color lightgrey}${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
-${color lightgrey}${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
-${color lightgrey}${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
 ]]
