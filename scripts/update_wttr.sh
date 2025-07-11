@@ -30,6 +30,13 @@ case "$ICON" in
    *) PHASE="Desconocida" ;;
 esac
 
+# Consulta JSON para probabilidad máxima de lluvia
+MAXRAIN=$(curl -s "wttr.in/~Barcelona+venezuela?format=j1" | grep -o '"chanceofrain":"[0-9]*"' | cut -d':' -f2 | tr -d '"' | sort -nr | head -n1)
+
+# Sustituir campo “Lluvia” por la probabilidad calculada
+DATA=$(echo "$DATA" | sed "s/Lluvia:[^+]*+/Lluvia:${MAXRAIN}%+/")
+
+# Integrar fase lunar
 FORMATTED=$(echo "$DATA" | sed "s/Luna:$ICON/Luna: $PHASE/")
 
 echo -e "$FORMATTED" > "$OUTPUT_FILE"
