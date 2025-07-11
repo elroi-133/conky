@@ -41,7 +41,7 @@ case "$MOON_PHASE_EN" in
 esac
 
 # Probabilidad máxima de lluvia del día
-MAXRAIN=$(echo "$WTTR_JSON" | grep -o '"chanceofrain":"[0-9]*"' | cut -d':' -f2 | tr -d '"' | sort -nr | head -n1)
+MAXRAIN=$(echo "$WTTR_JSON" | jq -r '.weather[0].hourly[].chanceofrain' | sort -nr | head -n1) 
 
 # Construir archivo final
 {
